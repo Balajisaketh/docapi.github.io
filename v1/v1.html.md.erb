@@ -1,0 +1,68 @@
+
+# POST GROUP
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("142.132.147.126", 5000)
+payload = json.dumps({
+  "invite_link": "https://t.me/demo139"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/groups ", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "invite_link": "https://t.me/demo139"
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://142.132.147.126:5000/groups ", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+```
+## JSON response for  the above request 
+{
+
+"message": "Success",
+
+"status_code": 200
+
+}
+```
+you can add your groups using below API 
+
+HTTP REQUEST :
+
+`POST  http://{{host}}:{{port}}/groups ` 
+
+Parameter | Description
+--------- | ------- |
+host|  eg:local host 3000
+port  | eg :local port 5500
+
+
+ 
+
+<%= partial "./api/v1/delete/del.html.md.erb" %>
+
+<%= partial "./api/v1/getdata/getreq.html.md.erb" %>
+
+
